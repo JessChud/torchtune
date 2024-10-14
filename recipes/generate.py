@@ -115,7 +115,6 @@ class InferenceRecipe:
             (c) neither an InstructTemplate nor a ChatFormat is provided. In this case we will
                 convert the DictConfig to a list of messages and call tokenizer.tokenize_messages directly.
         """
-
         # Should only be chat-style prompt or instruct-style prompt
         if chat_format and instruct_template:
             raise ValueError(
@@ -219,6 +218,7 @@ class InferenceRecipe:
 
 @config.parse
 def main(cfg: DictConfig) -> None:
+    print("entering main")
     config.log_config(recipe_name="InferenceRecipe", cfg=cfg)
     recipe = InferenceRecipe(cfg=cfg)
     recipe.setup(cfg=cfg)

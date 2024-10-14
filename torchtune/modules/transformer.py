@@ -191,6 +191,7 @@ class TransformerCrossAttentionLayer(nn.Module):
     def reset_cache(self):
         """Reset the key value caches."""
         self.attn.reset_cache()
+        self.attn.kv_cache=None # added 
 
     def _skip_mask(self, mask: Optional[torch.Tensor]) -> Optional[torch.Tensor]:
         """Some tokens in x may not attend to any encoder inputs
